@@ -1,0 +1,23 @@
+*{box-sizing:border-box}
+body{margin:0;font-family:"Yu Gothic UI","Meiryo",Arial,sans-serif;background:#f7f7fa;color:#222}
+.hdr{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid #ddd;padding:8px 12px}
+.hdr h1{margin:0 0 6px;font-size:18px}
+.row{display:flex;flex-wrap:wrap;gap:10px;font-size:14px}
+.row label{background:#f3f5ff;border:1px solid #dfe4ff;border-radius:8px;padding:6px 8px}
+.main{padding:12px}
+.card{background:#fff;border:1px solid #e5e5e5;border-radius:10px;padding:12px;margin-bottom:12px}
+.card.small{font-size:12px;color:#555}
+.help{font-size:12px;color:#555}
+textarea{width:100%;font-family:ui-monospace,Consolas,monospace;border:1px solid #ccc;border-radius:8px;padding:8px}
+.btns{display:flex;gap:8px;margin-top:8px}
+button{padding:8px 12px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;cursor:pointer}
+button:hover{background:#eef2ff}
+.grid{width:100%;border-collapse:collapse;background:#fff}
+.grid th,.grid td{border-top:1px solid #eee;padding:8px;vertical-align:top;text-align:left}
+.grid thead th{background:#f5f7fb;border-bottom:1px solid #ddd}
+.stats{margin:6px 0;color:#444;font-size:13px}
+.ftr{padding:10px 12px;color:#666;font-size:12px}
+@media print{
+  .hdr,.btns,.card.small,.ftr{display:none}
+  body{background:#fff}
+}

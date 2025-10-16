@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CTCAEラボ評価（IE対応）</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="hdr">
+  <h1>CTCAE ラボ自動グレード</h1>
+  <div class="row">
+    <label>性別:
+      <select id="sex">
+        <option value="F" selected>女性</option>
+        <option value="M">男性</option>
+      </select>
+    </label>
+    <label>基準：AST ULN <input id="uln_ast" type="number" value="40" step="1"> U/L</label>
+    <label>ALT ULN <input id="uln_alt" type="number" value="40" step="1"> U/L</label>
+    <label>K LLN <input id="lln_k" type="number" value="3.5" step="0.1"> mmol/L</label>
+    <label>Hb LLN(女/男) 自動</label>
+    <label><input id="baseline_abn" type="checkbox"> AST/ALTは「もともと異常」扱い</label>
+  </div>
+</header>
+
+<main class="main">
+  <section class="card">
+    <h2>検査値ペースト</h2>
+    <p class="help">電子カルテのコピー結果をそのまま貼り付けてください（1行1項目）。<br>例）
+      <code>001 Hb.    10.1</code><br>
+      <code>002 AST.    12</code>
+    </p>
+    <textarea id="paste" rows="8" placeholder="ここに貼り付け"></textarea>
+    <div class="btns">
+      <button id="submitBtn" type="button">送信して判定</button>
+      <button id="clearBtn" type="button">クリア</button>
+      <button id="copyBtn" type="button">表をコピー</button>
+      <button id="printBtn" type="button">印刷</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>CTCAE グレード結果</h2>
+    <div id="stats" class="stats">未判定</div>
+    <table class="grid" id="tbl">
+      <thead>
+        <tr>
+          <th style="min-width:140px">項目</th>
+          <th>値</th>
+          <th>単位</th>
+          <th>判定対象CTCAE用語</th>
+          <th>Grade</th>
+          <th>判定根拠</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+
+  <section class="card small">
+    <h3>注記</h3>
+    <ul>
+      <li>AST/ALT は <em>ULN 倍数</em>で判定（v5.0）。基準値は施設のULNに合わせて変更してください。</li>
+      <li>Hb（貧血）は g/dL の数値域で判定。女性は LLN=12.0、男性は LLN=13.0 を既定。</li>
+      <li>K（低カリウム血症）は LLN 未満の数値域で判定（v4.03と整合する数値域。v5でも同趣旨）。症状要件は自動判定に含めません。</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="ftr">
+  <small>
+    参考: CTCAE v5.0 Quick Reference / Excel（2017）; AST/ALT の倍率閾値（v5.0）; 低Kの数値域（v4.03, MedGen）など。詳細は院内基準に合わせてご運用ください。
+  </small>
+</footer>
+
+<script src="src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+  {
+    "soc": "Blood and lymphatic system disorders",
+    "term": "Anemia",
+    "g1": "Hemoglobin (Hgb) < LLN - 10.0 g/dL",
+    "g2": "Hgb <10.0 - 8.0 g/dL; limiting instrumental ADL",
+    "g3": "Severe or medically significant; limiting self care ADL",
+    "g4": "Life-threatening consequences; urgent intervention indicated",
+    "g5": "Death",
+    "notes": "CTCAE v5.0 example (abbrev.)"
+  },
+  {
+    "soc": "Gastrointestinal disorders",
+    "term": "Diarrhea",
+    "g1": "Increase of <4 stools per day over baseline",
+    "g2": "Increase of 4-6 stools per day; limiting instrumental ADL",
+    "g3": "Increase of ≥7 stools/day; incontinence; hospitalization",
+    "g4": "Life-threatening; urgent intervention indicated",
+    "g5": "Death",
+    "notes": "CTCAE v5.0 example (abbrev.)"
+  }
+]

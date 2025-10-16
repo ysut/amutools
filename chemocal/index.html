@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Carboplatin用量計算（IE11/オフライン）</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+  <style>
+    body { font-family: sans-serif; max-width: 760px; margin: 24px auto; line-height: 1.6; }
+    h1 { font-size: 20px; margin-bottom: 8px; }
+    .desc { color: #333; font-size: 13px; margin-bottom: 16px; }
+    .row { margin-bottom: 10px; }
+    label { display: block; margin-bottom: 4px; }
+    input[type="text"], select { width: 100%; box-sizing: border-box; padding: 8px; font-size: 14px; }
+    .inline { display: inline-block; margin-right: 16px; }
+    .btns { margin-top: 12px; }
+    button { padding: 8px 14px; font-size: 14px; cursor: pointer; }
+    .result { margin-top: 16px; padding: 12px; background: #f4f6f8; border: 1px solid #d4dadd; }
+    .err { color: #b00020; margin-top: 6px; }
+    .muted { color: #666; font-size: 12px; }
+    .mono { font-family: Consolas, "Courier New", monospace; }
+    .section { margin-top: 16px; padding-top: 8px; border-top: 1px dashed #ccc; }
+    .export { margin-top: 10px; }
+    #toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; background: #333; color: #fff; padding: 8px 12px; display:none; }
+  </style>
+</head>
+<body>
+  <h1>Carboplatin用量計算（Cockcroft–Gault + Calvert式）</h1>
+  <div class="desc">
+    入力：身長 <strong>cm</strong>、体重 <strong>kg</strong>、年齢 <strong>歳</strong>、血清Cr <strong>mg/dL</strong>、目標AUC。<br>
+    <strong>CG式</strong>：<span class="mono">CrCl = ((140 − 年齢) × 体重) / (72 × Cr)</span>（女性は×0.85）<br>
+    <strong>IBW（Devine，cm表記）</strong>：<span class="mono">男: 50 + 0.9×(身長cm − 152.4)，女: 45.5 + 0.9×(身長cm − 152.4)</span><br>
+    <strong>AdjBW</strong>：<span class="mono">IBW + 0.4×(実体重 − IBW)</span>（<strong>BMI＞25</strong> でAdjBW、≤25でActual を自動採用）<br>
+    <strong>Calvert式</strong>：<span class="mono">用量[mg] = AUC × (GFR + 25)</span><br>
+    ※ 血清Creが 0.7 mg/dL 未満で入力は <strong>0.7</strong> として計算。
+  </div>
+
+  <form id="calcForm" action="#" method="get" autocomplete="off">
+    <div class="row">
+      <label>性別</label>
+      <span class="inline"><label><input type="radio" name="sex" value="female" checked> 女性</label></span>
+      <span class="inline"><label><input type="radio" name="sex" value="male"> 男性</label></span>
+    </div>
+
+    <div class="row">
+      <label for="age">年齢（歳）</label>
+      <input id="age" type="text" placeholder="例：60">
+    </div>
+
+    <div class="row">
+      <label for="height">身長（cm）</label>
+      <input id="height" type="text" placeholder="例：160">
+    </div>
+
+    <div class="row">
+      <label for="weight">体重（kg）</label>
+      <input id="weight" type="text" placeholder="例：80">
+    </div>
+
+    <div class="row">
+      <label for="scr">血清クレアチニン（mg/dL）</label>
+      <input id="scr" type="text" placeholder="例：0.8">
+    </div>
+
+    <div class="row">
+      <label for="auc">目標AUC</label>
+      <input id="auc" type="text" placeholder="例：5">
+    </div>
+
+    <div class="row">
+      <label><input type="checkbox" id="capGfr" checked> GFR（CrCl）の上限を <span class="mono">125 mL/min</span> にキャップ</label>
+    </div>
+
+    <div class="btns">
+      <button type="submit">計算</button>
+      <button type="button" id="resetBtn">クリア</button>
+    </div>
+
+    <div id="err" class="err" role="alert" aria-live="polite" style="display:none;"></div>
+  </form>
+
+  <div id="result" class="result" style="display:none;">
+    <div><strong>BMI</strong>：<span id="bmiVal" class="mono">-</span>（kg/m²） / <strong>採用体重</strong>：<span id="wtUsedLabel" class="mono">-</span>（<span id="wtUsedVal" class="mono">-</span> kg）</div>
+    <div><strong>推算GFR（CrCl, mL/min）</strong>：<span id="gfrRaw" class="mono">-</span>（生値） / <span id="gfrUsed" class="mono">-</span>（使用値）</div>
+    <div><strong>血清Cr（使用値）</strong>：<span id="scrUsed" class="mono">-</span> mg/dL</div>
+    <div class="section" id="doseSection">
+      <div><strong>Carboplatin 投与量（Calvert式, mg）</strong>：<span id="doseMg" class="mono">-</span></div>
+      <div class="muted">表示桁：1 mg単位（参考）。運用に応じて端数処理は調整してください。</div>
+    </div>
+    <div class="section muted" id="detail"></div>
+
+    <div class="export">
+      <button type="button" id="btnCopyImg">画像コピー（実験的）</button>
+      <button type="button" id="btnSavePng">PNG保存</button>
+      <button type="button" id="btnCopyText">テキストをコピー</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <!-- 外部JS（IE11対応のためdeferは使わず、末尾で読み込み） -->
+  <script src="src/app.js"></script>
+
+  <div class="muted" style="margin-top:20px;">
+    ※ IE11は画像のクリップボードAPIがなく、画像コピーは失敗する場合があるらしい。<br>
+    最も確実なのは「PNG保存」→ <kbd>Ctrl</kbd>+<kbd>C</kbd> で電子カルテへ貼り付け。<br>
+    ※ 本ツールは医療判断の補助目的です。施設プロトコル（GFR上限・丸め規則 等）に従ってください。
+  </div>
+</body>
+</html>
