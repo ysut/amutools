@@ -1,0 +1,76 @@
+{
+  "version": "CTCAE v5.0",
+  "meta": {
+    "source": "NCI CTCAE v5.0 (2017-11-27)",
+    "units_note": "AST/ALT: U/L, Hb: g/dL, K: mmol/L"
+  },
+  "refs": {
+    "ULN_AST_default": 40,
+    "ULN_ALT_default": 40,
+    "LLN_K_default": 3.5,
+    "LLN_Hb_F": 12.0,
+    "LLN_Hb_M": 13.0
+  },
+  "labs": [
+    {
+      "id": "AST",
+      "display": "AST",
+      "unit": "U/L",
+      "method": "ratio_uln",
+      "ctcae_term": "AST increased",
+      "cutpoints": [
+        { "min_ratio": 1.0000001, "max_ratio": 3.0,  "grade": 1, "reason": "> ULN - 3×ULN" },
+        { "min_ratio": 3.0,       "max_ratio": 5.0,  "grade": 2, "reason": "> 3 - 5×ULN" },
+        { "min_ratio": 5.0,       "max_ratio": 20.0, "grade": 3, "reason": "> 5 - 20×ULN" },
+        { "min_ratio": 20.0,      "max_ratio": null, "grade": 4, "reason": "> 20×ULN" }
+      ],
+      "normal_reason": "≤ ULN"
+    },
+    {
+      "id": "ALT",
+      "display": "ALT",
+      "unit": "U/L",
+      "method": "ratio_uln",
+      "ctcae_term": "ALT increased",
+      "cutpoints": [
+        { "min_ratio": 1.0000001, "max_ratio": 3.0,  "grade": 1, "reason": "> ULN - 3×ULN" },
+        { "min_ratio": 3.0,       "max_ratio": 5.0,  "grade": 2, "reason": "> 3 - 5×ULN" },
+        { "min_ratio": 5.0,       "max_ratio": 20.0, "grade": 3, "reason": "> 5 - 20×ULN" },
+        { "min_ratio": 20.0,      "max_ratio": null, "grade": 4, "reason": "> 20×ULN" }
+      ],
+      "normal_reason": "≤ ULN"
+    },
+    {
+      "id": "HB",
+      "display": "Hb",
+      "unit": "g/dL",
+      "method": "absolute_hb_vs_lln",
+      "ctcae_term": "Anemia",
+      "cutpoints": [
+        { "min": -999, "max": 8.0,  "grade": 3, "reason": "< 8.0 g/dL（G4は臨床所見）" },
+        { "min": 8.0,  "max": 10.0, "grade": 2, "reason": "< 10.0 - 8.0 g/dL" },
+        { "min": "LLN-", "max": 10.0, "grade": 1, "reason": "< LLN - 10.0 g/dL" }
+      ],
+      "normal_reason": "≥ LLN"
+    },
+    {
+      "id": "K",
+      "display": "K",
+      "unit": "mmol/L",
+      "method": "absolute_k_vs_lln",
+      "ctcae_term": "Hypokalemia",
+      "cutpoints": [
+        { "min": -999, "max": 2.5,  "grade": 4, "reason": "< 2.5 mmol/L" },
+        { "min": 2.5,  "max": 3.0,  "grade": 3, "reason": "3.0 - 2.5 mmol/L" },
+        { "min": "LLN-", "max": 3.0, "grade": 1, "reason": "< LLN - 3.0 mmol/L（症状あればG2）" }
+      ],
+      "normal_reason": "≥ LLN"
+    }
+  ],
+  "map_keys": [
+    { "keys": ["hb","hemoglobin","ヘモグロビン","貧血"], "target": "HB" },
+    { "keys": ["ast","got"], "target": "AST" },
+    { "keys": ["alt","gpt"], "target": "ALT" },
+    { "keys": ["k","potassium","カリウム"], "target": "K" }
+  ]
+}

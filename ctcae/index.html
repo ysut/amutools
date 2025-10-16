@@ -28,11 +28,19 @@
 <main class="main">
   <section class="card">
     <h2>検査値ペースト</h2>
-    <p class="help">電子カルテのコピー結果をそのまま貼り付けてください（1行1項目）。<br>例）
-      <code>001 Hb.    10.1</code><br>
-      <code>002 AST.    12</code>
+    <p class="help">電子カルテのコピー結果をそのまま貼り付けてください。
+    <!--
+      依頼元 ５－東
+      001 [尿定性]                                
+      002  色調              黄色                 
+      003  混濁                清                 
+      付加コメント
+      依頼コメント
+      検体コメント
+    -->
+
     </p>
-    <textarea id="paste" rows="8" placeholder="ここに貼り付け"></textarea>
+    <textarea id="paste" rows="10" placeholder="ここに貼り付け"></textarea>
     <div class="btns">
       <button id="submitBtn" type="button">送信して判定</button>
       <button id="clearBtn" type="button">クリア</button>
@@ -75,6 +83,10 @@
   </small>
 </footer>
 
+
+<script src="src/loader.js"></script>
+<script src="src/parser.js"></script> <!-- ★追加：先にパーサ -->
 <script src="src/app.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>産婦人科 医局説明会・募集</title>
+  <meta name="description" content="産婦人科 医局説明会のご案内と応募フォーム。学生・研修医向け。スマホ対応。" />
+  <meta property="og:title" content="産婦人科 医局説明会・募集" />
+  <meta property="og:description" content="医局説明会の概要と応募フォーム。学生・研修医向け。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.jpg" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- TailwindCSS CDN（GitHub Pagesでもそのまま使えます） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 簡易アニメーション */
+    .fade-in { animation: fadein .6s ease-out; }
+    @keyframes fadein { from { opacity: 0; transform: translateY(4px);} to { opacity: 1; transform: translateY(0);} }
+
+    /* フォームのハニーポット（人間には非表示） */
+    .hp { position: absolute; left: -5000px; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- ヘッダー -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/80 border-b">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="font-bold text-lg">産婦人科 医局説明会</a>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="#about" class="hover:underline">概要</a>
+        <a href="#outline" class="hover:underline">説明会</a>
+        <a href="#faq" class="hover:underline">FAQ</a>
+        <a href="#apply" class="hover:underline font-semibold">応募</a>
+      </nav>
+      <a href="#apply" class="sm:hidden inline-block px-3 py-2 rounded-lg bg-indigo-600 text-white text-sm">応募</a>
+    </div>
+  </header>
+
+  <!-- ファーストビュー -->
+  <section id="top" class="max-w-3xl mx-auto px-4 pt-10 pb-8">
+    <div class="bg-white rounded-2xl shadow p-6 sm:p-8 fade-in">
+      <p class="text-xs text-indigo-700 font-semibold mb-2">OB‑GYN RECRUIT</p>
+      <h1 class="text-2xl sm:text-3xl font-bold leading-tight mb-3">産婦人科 医局員募集 / 医局説明会のご案内</h1>
+      <p class="text-gray-700 leading-relaxed">医学生・初期/後期研修医の皆さまを対象に、<span class="font-semibold">医局説明会</span>を開催します。妊娠・出産の最前線から腫瘍・内視鏡・生殖医療まで、幅広い学びとキャリア形成をサポートします。スマートフォンから30秒で応募できます。</p>
+      <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-600">
+        <span class="inline-flex items-center gap-1 px-2 py-1 bg-indigo-50 text-indigo-700 rounded">#学生歓迎</span>
+        <span class="inline-flex items-center gap-1 px-2 py-1 bg-rose-50 text-rose-700 rounded">#当直少なめ選択可</span>
+        <span class="inline-flex items-center gap-1 px-2 py-1 bg-emerald-50 text-emerald-700 rounded">#研究支援</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 概要 -->
+  <section id="about" class="max-w-3xl mx-auto px-4 pb-4">
+    <div class="bg-white rounded-2xl shadow p-6 sm:p-8 fade-in">
+      <h2 class="text-xl font-bold mb-4">募集のねらい</h2>
+      <ul class="list-disc pl-5 space-y-2 text-gray-800">
+        <li>分娩・救急・腫瘍・周産期・生殖医療のローテーションで、偏りなく実力を養成</li>
+        <li>指導医・専門医による屋根瓦方式の手厚いサポート</li>
+        <li>学会発表・論文作成・留学などキャリアの選択肢を広く用意</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 説明会の概要 -->
+  <section id="outline" class="max-w-3xl mx-auto px-4 pb-4">
+    <div class="bg-white rounded-2xl shadow p-6 sm:p-8 fade-in">
+      <h2 class="text-xl font-bold mb-4">医局説明会 概要</h2>
+      <div class="grid sm:grid-cols-2 gap-4 text-gray-800">
+        <div>
+          <p class="text-sm text-gray-500">日時</p>
+          <p class="font-semibold">YYYY年MM月DD日(曜) 18:00–19:30</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">開催形式</p>
+          <p class="font-semibold">現地/オンライン ハイブリッド（Zoom）</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">会場</p>
+          <p class="font-semibold">○○大学 ○号館 ○階 カンファレンス室</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">対象</p>
+          <p class="font-semibold">医学生・初期研修医・後期研修医</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-sm text-gray-500">プログラム(例)</p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>医局長挨拶・診療体制紹介</li>
+          <li>若手医師のキャリア/働き方</li>
+          <li>専門分野紹介（周産期・腫瘍・生殖 etc.）</li>
+          <li>質疑応答 & 交流</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="max-w-3xl mx-auto px-4 pb-4">
+    <div class="bg-white rounded-2xl shadow p-6 sm:p-8 fade-in">
+      <h2 class="text-xl font-bold mb-4">よくある質問</h2>
+      <div class="space-y-4">
+        <details class="group">
+          <summary class="cursor-pointer flex items-center justify-between py-2">
+            <span class="font-semibold">当直や働き方は柔軟に選べますか？</span>
+            <span class="text-gray-500 group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="text-gray-700">ライフイベントや学業・研究の状況に応じて、当直回数や勤務形態の調整が可能です。</p>
+        </details>
+        <details class="group">
+          <summary class="cursor-pointer flex items-center justify-between py-2">
+            <span class="font-semibold">研究・学会発表のサポートは？</span>
+            <span class="text-gray-500 group-open:rotate-180 transition">▼</span>
+          </summary>
+          <p class="text-gray-700">学会参加費補助、英文校正支援、統計/研究計画のメンタリングなどを行っています。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 応募フォーム -->
+  <section id="apply" class="max-w-3xl mx-auto px-4 pb-24">
+    <div class="bg-white rounded-2xl shadow p-6 sm:p-8 fade-in">
+      <h2 class="text-xl font-bold mb-4">応募フォーム</h2>
+      <p class="text-sm text-gray-600 mb-4">以下のフォームを送信すると、担当者にメールが届きます。2–3営業日以内にご連絡します。</p>
+
+      <!--
+        ★ フォーム送信先（Formspree 推奨）：
+        1) https://formspree.io にログイン → 新規フォーム作成
+        2) 生成された Endpoint URL を下の action="…" に貼り付け
+        3) 受信先メールを Formspree 側で設定
+        4) Free枠でも十分利用可（スパム対策にハニーポットを同梱）
+      -->
+      <form id="entryForm" action="https://formspree.io/f/your-endpoint-id" method="POST" class="space-y-4" novalidate>
+        <!-- ハニーポット（ボット対策） -->
+        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" />
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sm">お名前 <span class="text-rose-600">*</span></span>
+            <input name="name" required type="text" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="例）山田 太郎" />
+          </label>
+          <label class="block">
+            <span class="text-sm">メールアドレス <span class="text-rose-600">*</span></span>
+            <input name="email" required type="email" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="例）example@xxx.ac.jp" />
+          </label>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sm">ご所属</span>
+            <input name="affiliation" type="text" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="大学名・学年／研修先など" />
+          </label>
+          <label class="block">
+            <span class="text-sm">参加希望</span>
+            <select name="attendance" class="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="未定">未定</option>
+              <option value="現地参加">現地参加</option>
+              <option value="オンライン参加">オンライン参加</option>
+              <option value="説明会日程が合わない（個別相談希望）">説明会日程が合わない（個別相談希望）</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="block">
+          <span class="text-sm">興味のある分野（複数可）</span>
+          <div class="mt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 text-sm">
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="周産期">周産期</label>
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="腫瘍">腫瘍</label>
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="生殖医療">生殖医療</label>
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="内視鏡">内視鏡</label>
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="女性医療一般">女性医療一般</label>
+            <label class="inline-flex items-center gap-2"><input type="checkbox" name="interests" value="研究">研究</label>
+          </div>
+        </label>
+
+        <label class="block">
+          <span class="text-sm">ご質問・メッセージ</span>
+          <textarea name="message" rows="4" class="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="事前に知りたいこと、配慮事項など"></textarea>
+        </label>
+
+        <!-- 同意 -->
+        <label class="block text-sm text-gray-700">
+          <input type="checkbox" required class="align-middle mr-2" name="consent" value="ok">
+          個人情報は説明会の連絡のみに使用されます。
+        </label>
+
+        <button type="submit" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-indigo-600 text-white font-semibold hover:bg-indigo-700 active:bg-indigo-800">送信する</button>
+
+        <p id="formStatus" class="text-sm mt-2"></p>
+      </form>
+
+      <p class="mt-6 text-xs text-gray-500">※ うまく送信できない場合は、<a class="underline" href="mailto:obgyn-recruit@example.ac.jp?subject=医局説明会応募">obgyn-recruit@example.ac.jp</a> へメールください。</p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="fixed inset-x-0 bottom-0 bg-white/95 border-t">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <span class="text-xs text-gray-600">© <span id="y"></span> 産婦人科医局</span>
+      <a href="#apply" class="px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-semibold">今すぐ応募</a>
+    </div>
+  </footer>
+
+  <script>
+    // 年号を自動で入れる
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // HTML5 の簡易バリデーション + 送信処理（フェッチ）
+    const form = document.getElementById('entryForm');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // ネイティブ検証
+      if (!form.reportValidity()) return;
+
+      statusEl.textContent = '送信中…';
+      statusEl.className = 'text-sm mt-2 text-gray-600';
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data,
+        });
+
+        if (res.ok) {
+          statusEl.textContent = '送信しました。ご登録ありがとうございます！';
+          statusEl.className = 'text-sm mt-2 text-emerald-700';
+          form.reset();
+        } else {
+          const j = await res.json().catch(() => ({}));
+          throw new Error(j.error || '送信に失敗しました。お手数ですがメールでご連絡ください。');
+        }
+      } catch (err) {
+        statusEl.textContent = err.message;
+        statusEl.className = 'text-sm mt-2 text-rose-700';
+      }
+    });
+  </script>
+</body>
+</html>
